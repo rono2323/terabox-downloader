@@ -699,4 +699,791 @@
             </div>
             
             <div id="questions-container">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
             
+            <div class="nav-buttons">
+                <button id="prev-question" class="btn btn-outline hidden">Previous Question</button>
+                <button id="next-question" class="btn">Next Question</button>
+                <button id="submit-test" class="btn btn-success hidden">Submit Test</button>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <section id="payment-section" class="card hidden">
+            <div class="step-indicator">
+                <div class="step">1</div>
+                <div class="step-line"></div>
+                <div class="step">2</div>
+                <div class="step-line"></div>
+                <div class="step active">3</div>
+                <div class="step-line"></div>
+                <div class="step">4</div>
+            </div>
+            
+            <h2 class="section-title">Unlock Your Certificate</h2>
+            
+            <div class="completion-message">
+                <h3><i class="fas fa-check-circle" style="color: var(--success);"></i> Test Completed Successfully!</h3>
+                <p>You've completed the test with a score of <strong id="score-display">0%</strong>. Now unlock your certificate with a payment of just ₹5.</p>
+                <p><em>Note: Everyone receives a certificate regardless of their score!</em></p>
+            </div>
+            
+            <div class="payment-options">
+                <div class="payment-option" data-method="card">
+                    <div class="payment-icon">
+                        <i class="far fa-credit-card"></i>
+                    </div>
+                    <h3>Credit/Debit Card</h3>
+                    <p>Pay with Visa, MasterCard, RuPay</p>
+                </div>
+                
+                <div class="payment-option selected" data-method="upi">
+                    <div class="payment-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>UPI</h3>
+                    <p>Pay with any UPI app</p>
+                </div>
+                
+                <div class="payment-option" data-method="netbanking">
+                    <div class="payment-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Net Banking</h3>
+                    <p>Pay using your bank account</p>
+                </div>
+            </div>
+            
+            <div id="upi-details" class="upi-details">
+                <h3>UPI Payment</h3>
+                <p>Click on your UPI app to pay ₹5 directly</p>
+                
+                <div class="upi-apps">
+                    <div class="upi-app" data-app="gpay">
+                        <i class="fab fa-google-pay" style="color: #5F6368;"></i>
+                        <span>Google Pay</span>
+                    </div>
+                    <div class="upi-app" data-app="phonepe">
+                        <i class="fas fa-mobile-alt" style="color: #673AB7;"></i>
+                        <span>PhonePe</span>
+                    </div>
+                    <div class="upi-app" data-app="paytm">
+                        <i class="fas fa-wallet" style="color: #002970;"></i>
+                        <span>Paytm</span>
+                    </div>
+                    <div class="upi-app" data-app="bhim">
+                        <i class="fas fa-university" style="color: #0D47A1;"></i>
+                        <span>BHIM</span>
+                    </div>
+                </div>
+                
+               <img src="your-image-url.jpg" alt="UPI Payment QR" style="margin-top: 15px; max-width: 100%; height: auto;" />
+
+            </div>
+            
+            <div id="payment-status"></div>
+            
+            <div class="nav-buttons">
+                <button id="back-to-test" class="btn btn-outline">Back to Test</button>
+                <button id="process-payment" class="btn btn-payment">
+                    <i class="fas fa-lock"></i> Pay ₹5 via UPI
+                </button>
+            </div>
+            
+            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
+                <i class="fas fa-shield-alt"></i> Secure payment processing
+            </p>
+        </section>
+
+        <!-- Certificate Section -->
+        <section id="certificate-section" class="card hidden">
+            <div class="step-indicator">
+                <div class="step">1</div>
+                <div class="step-line"></div>
+                <div class="step">2</div>
+                <div class="step-line"></div>
+                <div class="step">3</div>
+                <div class="step-line"></div>
+                <div class="step active">4</div>
+            </div>
+            
+            <h2 class="section-title">Congratulations!</h2>
+            <p>You've successfully completed the test and payment. Here's your certificate:</p>
+            
+            <div class="certificate">
+                <h2>CERTIFICATE OF COMPLETION</h2>
+                <p>This certifies that</p>
+                <div class="user-name" id="certificate-name">John Doe</div>
+                <p>has successfully completed the</p>
+                <div class="test-title" id="certificate-test">Test Name</div>
+                <p>with a score of</p>
+                <div class="score" id="certificate-score">0%</div>
+                <p>and is hereby awarded this certificate</p>
+                <div class="date" id="certificate-date">Issued on: October 15, 2023</div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button id="download-certificate" class="btn btn-success">
+                    <i class="fas fa-download"></i> Download Certificate
+                </button>
+                <button id="new-test" class="btn btn-outline" style="margin-left: 15px;">
+                    Take Another Test
+                </button>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>SkillCert - Skill Assessment Platform &copy; 2023. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // DOM Elements
+        const testListSection = document.getElementById('test-list');
+        const userInfoSection = document.getElementById('user-info');
+        const testSection = document.getElementById('test-section');
+        const paymentSection = document.getElementById('payment-section');
+        const certificateSection = document.getElementById('certificate-section');
+        const paymentStatus = document.getElementById('payment-status');
+        const upiDetails = document.getElementById('upi-details');
+        const scoreDisplay = document.getElementById('score-display');
+        
+        const startTestBtns = document.querySelectorAll('.start-test-btn');
+        const backToTestsBtn = document.getElementById('back-to-tests');
+        const startTestBtn = document.getElementById('start-test');
+        const prevQuestionBtn = document.getElementById('prev-question');
+        const nextQuestionBtn = document.getElementById('next-question');
+        const submitTestBtn = document.getElementById('submit-test');
+        const backToTestBtn = document.getElementById('back-to-test');
+        const processPaymentBtn = document.getElementById('process-payment');
+        const downloadCertificateBtn = document.getElementById('download-certificate');
+        const newTestBtn = document.getElementById('new-test');
+        
+        const userNameInput = document.getElementById('user-name');
+        const userEmailInput = document.getElementById('user-email');
+        const testTitle = document.getElementById('test-title');
+        const questionsContainer = document.getElementById('questions-container');
+        const testProgress = document.getElementById('test-progress');
+        const progressText = document.getElementById('progress-text');
+        
+        const certificateName = document.getElementById('certificate-name');
+        const certificateTest = document.getElementById('certificate-test');
+        const certificateScore = document.getElementById('certificate-score');
+        const certificateDate = document.getElementById('certificate-date');
+        
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        const upiApps = document.querySelectorAll('.upi-app');
+        
+        // Test Data
+        let currentTest = null;
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let userName = '';
+        let userEmail = '';
+        let userScore = 0;
+        let selectedPaymentMethod = 'upi';
+        
+        // UPI Payment Details
+        const upiId = 'sbi2308rohan@ybl';
+        const amount = 5;
+        const transactionNote = 'Skill Assessment Test Certificate';
+        
+        // Test Questions Database
+        const tests = {
+            'dsa': {
+                title: 'Data Structures & Algorithms',
+                questions: [
+                    {
+                        question: 'Which data structure follows the LIFO principle?',
+                        options: ['Queue', 'Stack', 'Array', 'Linked List'],
+                        correct: 1
+                    },
+                    {
+                        question: 'What is the time complexity of binary search?',
+                        options: ['O(n)', 'O(log n)', 'O(n log n)', 'O(1)'],
+                        correct: 1
+                    },
+                    {
+                        question: 'Which sorting algorithm has the best worst-case time complexity?',
+                        options: ['Bubble Sort', 'Quick Sort', 'Merge Sort', 'Insertion Sort'],
+                        correct: 2
+                    },
+                    {
+                        question: 'What is a hash collision?',
+                        options: [
+                            'When two keys hash to the same index',
+                            'When a hash table is full',
+                            'When a hash function returns an error',
+                            'When hash values are not unique'
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: 'Which data structure is used for implementing recursion?',
+                        options: ['Queue', 'Stack', 'Tree', 'Graph'],
+                        correct: 1
+                    },
+                    {
+                        question: 'What is the time complexity of inserting an element at the beginning of an array?',
+                        options: ['O(1)', 'O(n)', 'O(log n)', 'O(n log n)'],
+                        correct: 1
+                    },
+                    {
+                        question: 'Which traversal visits root, left subtree, then right subtree?',
+                        options: ['Inorder', 'Preorder', 'Postorder', 'Level order'],
+                        correct: 1
+                    },
+                    {
+                        question: 'What is the space complexity of DFS on a graph?',
+                        options: ['O(V)', 'O(V+E)', 'O(E)', 'O(V log V)'],
+                        correct: 0
+                    },
+                    {
+                        question: 'Which algorithm finds the shortest path in a weighted graph?',
+                        options: ['BFS', 'DFS', "Dijkstra's", 'Binary Search'],
+                        correct: 2
+                    },
+                    {
+                        question: 'What is the average case time complexity of Quick Sort?',
+                        options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(log n)'],
+                        correct: 1
+                    }
+                ]
+            },
+            'cloud': {
+                title: 'Cloud Computing',
+                questions: [
+                    {
+                        question: 'Which AWS service provides object storage?',
+                        options: ['EC2', 'S3', 'Lambda', 'RDS'],
+                        correct: 1
+                    },
+                    {
+                        question: 'What does IaaS stand for?',
+                        options: [
+                            'Infrastructure as a Service',
+                            'Internet as a Service',
+                            'Integration as a Service',
+                            'Information as a Service'
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: 'Which Azure service is used for virtual machines?',
+                        options: ['Azure VM', 'Azure App Service', 'Azure Functions', 'Azure SQL'],
+                        correct: 0
+                    },
+                    {
+                        question: 'What is the primary benefit of cloud computing?',
+                        options: [
+                            'Reduced capital expenditure',
+                            'Increased physical security',
+                            'Faster internet speeds',
+                            'More office space'
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: 'Which GCP service is used for big data analytics?',
+                        options: ['BigQuery', 'Cloud Storage', 'Compute Engine', 'Cloud Functions'],
+                        correct: 0
+                    },
+                    {
+                        question: 'What does SaaS stand for?',
+                        options: [
+                            'Storage as a Service',
+                            'Software as a Service',
+                            'Security as a Service',
+                            'Server as a Service'
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: 'Which AWS service is used for serverless computing?',
+                        options: ['EC2', 'S3', 'Lambda', 'RDS'],
+                        correct: 2
+                    },
+                    {
+                        question: 'What is auto-scaling in cloud computing?',
+                        options: [
+                            'Automatically adjusting storage capacity',
+                            'Automatically adjusting compute resources',
+                            'Automatically updating software',
+                            'Automatically backing up data'
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: 'Which Azure service provides relational database?',
+                        options: ['Azure Cosmos DB', 'Azure SQL Database', 'Azure Table Storage', 'Azure Blob Storage'],
+                        correct: 1
+                    },
+                    {
+                        question: 'What is a VPC in AWS?',
+                        options: [
+                            'Virtual Private Cloud',
+                            'Virtual Public Cloud',
+                            'Virtual Processing Center',
+                            'Virtual Private Connection'
+                        ],
+                        correct: 0
+                    }
+                ]
+            },
+            'devops': {
+                title: 'DevOps & CI/CD',
+                questions: [
+                    {
+                        question: 'What does CI/CD stand for?',
+                        options: [
+                            'Continuous Integration/Continuous Deployment',
+                            'Continuous Inspection/Continuous Delivery',
+                            'Centralized Integration/Centralized Deployment',
+                            'Code Integration/Code Deployment'
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: 'Which tool is used for containerization?',
+                        options: ['Jenkins', 'Docker', 'Kubernetes', 'Git'],
+                        correct: 1
+                    },
+                    {
+                        question: 'What is Kubernetes used for?',
+                        options: [
+                            'Container orchestration',
+                            'Continuous integration',
+                            'Version control',
+                            'Configuration management'
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: 'Which file is used to define Docker containers?',
+                        options: ['Dockerfile', 'Container.yml', 'Docker.yml', 'Buildfile'],
+                        correct: 0
+                    },
+                    {
+                        question: 'What is the main purpose of Jenkins?',
+                        options: [
+                            'Container orchestration',
+                            'Continuous integration',
+                            'Version control',
+                            'Infrastructure as code'
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: 'Which command is used to build a Docker image?',
+                        options: [
+                            'docker create image',
+                            'docker build',
+                            'docker run',
+                            'docker compose'
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: 'What is a pod in Kubernetes?',
+                        options: [
+                            'A single container',
+                            'A group of related containers',
+                            'A cluster node',
+                            'A network policy'
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: 'Which tool is used for infrastructure as code?',
+                        options: ['Terraform', 'Jenkins', 'Docker', 'Kubernetes'],
+                        correct: 0
+                    },
+                    {
+                        question: 'What is the purpose of Helm in Kubernetes?',
+                        options: [
+                            'Package manager',
+                            'Container runtime',
+                            'Networking',
+                            'Security'
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: 'Which file format is commonly used in Kubernetes?',
+                        options: ['YAML', 'XML', 'JSON', 'CSV'],
+                        correct: 0
+                    }
+                ]
+            },
+            'cybersecurity': {
+                title: 'Cybersecurity',
+                questions: [
+                    {
+                        question: 'What is phishing?',
+                        options: [
+                            'A type of malware',
+                            'A social engineering attack',
+                            'A DDoS attack',
+                            'A encryption method'
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: 'Which port is typically used for HTTPS?',
+                        options: ['80', '443', '22', '25'],
+                        correct: 1
+                    },
+                    {
+                        question: 'What is a VPN used for?',
+                        options: [
+                            'Creating secure connections',
+                            'Speeding up internet',
+                            'Blocking ads',
+                            'Managing passwords'
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: 'What does DDoS stand for?',
+                        options: [
+                            'Distributed Denial of Service',
+                            'Direct Denial of Service',
+                            'Data Denial of Service',
+                            'Digital Denial of Service'
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: 'Which encryption algorithm is asymmetric?',
+                        options: ['AES', 'DES', 'RSA', 'RC4'],
+                        correct: 2
+                    },
+                    {
+                        question: 'What is the purpose of a firewall?',
+                        options: [
+                            'Monitor network traffic',
+                            'Block unauthorized access',
+                            'Both A and B',
+                            'Encrypt data'
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: 'What is ethical hacking?',
+                        options: [
+                            'Hacking for malicious purposes',
+                            'Hacking with permission to improve security',
+                            'Hacking without any purpose',
+                            'Hacking only for financial gain'
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: 'Which authentication method uses something you have?',
+                        options: ['Password', 'Fingerprint', 'Security token', 'Face recognition'],
+                        correct: 2
+                    },
+                    {
+                        question: 'What is a zero-day vulnerability?',
+                        options: [
+                            'A vulnerability with no known fix',
+                            'A vulnerability that occurs at midnight',
+                            'A vulnerability that affects zero systems',
+                            'A vulnerability that is not serious'
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: 'Which protocol is used for secure email?',
+                        options: ['SMTP', 'POP3', 'PGP', 'FTP'],
+                        correct: 2
+                    }
+                ]
+            }
+        };
+        
+        // Event Listeners
+        startTestBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const testCard = e.target.closest('.test-card');
+                currentTest = testCard.getAttribute('data-test');
+                showSection(userInfoSection);
+            });
+        });
+        
+        backToTestsBtn.addEventListener('click', () => {
+            showSection(testListSection);
+        });
+        
+        startTestBtn.addEventListener('click', () => {
+            userName = userNameInput.value.trim();
+            userEmail = userEmailInput.value.trim();
+            
+            if (userName === '' || userEmail === '') {
+                alert('Please enter your name and email');
+                return;
+            }
+            
+            if (!isValidEmail(userEmail)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            startTest();
+        });
+        
+        prevQuestionBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        });
+        
+        nextQuestionBtn.addEventListener('click', () => {
+            const selectedOption = document.querySelector('input[name="option"]:checked');
+            
+            if (!selectedOption) {
+                alert('Please select an answer');
+                return;
+            }
+            
+            userAnswers[currentQuestionIndex] = parseInt(selectedOption.value);
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex < tests[currentTest].questions.length) {
+                displayQuestion();
+            } else {
+                nextQuestionBtn.classList.add('hidden');
+                submitTestBtn.classList.remove('hidden');
+            }
+        });
+        
+        submitTestBtn.addEventListener('click', () => {
+            const selectedOption = document.querySelector('input[name="option"]:checked');
+            
+            if (!selectedOption) {
+                alert('Please select an answer');
+                return;
+            }
+            
+            userAnswers[currentQuestionIndex] = parseInt(selectedOption.value);
+            calculateScore();
+            showSection(paymentSection);
+        });
+        
+        backToTestBtn.addEventListener('click', () => {
+            showSection(testSection);
+        });
+        
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedPaymentMethod = option.getAttribute('data-method');
+                
+                // Show UPI details if UPI is selected
+                if (selectedPaymentMethod === 'upi') {
+                    upiDetails.classList.remove('hidden');
+                } else {
+                    upiDetails.classList.add('hidden');
+                }
+            });
+        });
+        
+        upiApps.forEach(app => {
+            app.addEventListener('click', () => {
+                const appName = app.getAttribute('data-app');
+                redirectToUPIApp(appName);
+            });
+        });
+        
+        // ADDED: Direct UPI payment when clicking the payment button
+        processPaymentBtn.addEventListener('click', () => {
+            // Direct UPI payment link
+            const upiLink = "upi://pay?pa=sbi2308rohan@ybl&pn=Rohan&am=5&cu=INR";
+            
+            // Open the UPI payment directly
+            window.location.href = upiLink;
+            
+            // Show payment processing message
+            paymentStatus.innerHTML = `
+                <div class="payment-processing">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <h3>Redirecting to UPI Payment</h3>
+                    <p>Please complete the payment in your UPI app. After payment, your certificate will be generated automatically.</p>
+                </div>
+            `;
+            
+            // Simulate payment verification and certificate generation
+            setTimeout(() => {
+                paymentStatus.innerHTML = `
+                    <div class="payment-status payment-success">
+                        <i class="fas fa-check-circle"></i> Payment Successful! 
+                        Your certificate is being generated.
+                    </div>
+                `;
+                
+                // Generate certificate after successful payment
+                setTimeout(() => {
+                    generateCertificate();
+                }, 2000);
+            }, 5000);
+        });
+        
+        downloadCertificateBtn.addEventListener('click', () => {
+            alert('Certificate download started! In a real application, this would generate a PDF.');
+            
+            // Create a temporary link to simulate download
+            const link = document.createElement('a');
+            link.href = '#';
+            link.download = `${userName}_${tests[currentTest].title.replace(/\s+/g, '_')}_Certificate.pdf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+        
+        newTestBtn.addEventListener('click', () => {
+            resetTest();
+            showSection(testListSection);
+        });
+        
+        // Functions
+        function showSection(section) {
+            // Hide all sections
+            testListSection.classList.add('hidden');
+            userInfoSection.classList.add('hidden');
+            testSection.classList.add('hidden');
+            paymentSection.classList.add('hidden');
+            certificateSection.classList.add('hidden');
+            
+            // Show the requested section
+            section.classList.remove('hidden');
+        }
+        
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        function startTest() {
+            testTitle.textContent = tests[currentTest].title + ' Test';
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            nextQuestionBtn.classList.remove('hidden');
+            submitTestBtn.classList.add('hidden');
+            prevQuestionBtn.classList.add('hidden');
+            displayQuestion();
+            showSection(testSection);
+        }
+        
+        function displayQuestion() {
+            const question = tests[currentTest].questions[currentQuestionIndex];
+            
+            // Update progress
+            const progress = ((currentQuestionIndex + 1) / tests[currentTest].questions.length) * 100;
+            testProgress.style.width = `${progress}%`;
+            progressText.textContent = `Question ${currentQuestionIndex + 1} of ${tests[currentTest].questions.length}`;
+            
+            // Show/hide previous button
+            if (currentQuestionIndex > 0) {
+                prevQuestionBtn.classList.remove('hidden');
+            } else {
+                prevQuestionBtn.classList.add('hidden');
+            }
+            
+            // Display question
+            questionsContainer.innerHTML = `
+                <div class="question">
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">
+                        ${question.options.map((option, index) => `
+                            <label class="option ${userAnswers[currentQuestionIndex] === index ? 'selected' : ''}">
+                                <input type="radio" name="option" value="${index}" ${userAnswers[currentQuestionIndex] === index ? 'checked' : ''}>
+                                ${option}
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', () => {
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    option.classList.add('selected');
+                    option.querySelector('input').checked = true;
+                });
+            });
+        }
+        
+        function calculateScore() {
+            let correctAnswers = 0;
+            tests[currentTest].questions.forEach((question, index) => {
+                if (userAnswers[index] === question.correct) {
+                    correctAnswers++;
+                }
+            });
+            
+            userScore = Math.round((correctAnswers / tests[currentTest].questions.length) * 100);
+            scoreDisplay.textContent = `${userScore}%`;
+        }
+        
+        function redirectToUPIApp(appName) {
+            // Create UPI payment URL
+            const upiUrl =  "upi://pay?pa=sbi2308rohan@ybl&pn=Rohan&am=5&cu=INR";
+            
+            // Different UPI apps have different URL schemes
+            let redirectUrl;
+switch(appName) {
+    case 'gpay':
+    case 'phonepe':
+    case 'paytm':
+    case 'bhim':
+    default:
+        redirectUrl = "upi://pay?pa=sbi2308rohan@ybl&pn=Rohan&am=5&cu=INR";
+}
+
+            
+            // Try to open the UPI app
+            window.open(redirectUrl, '_blank');
+        }
+        
+        function generateCertificate() {
+            // Set certificate details
+            certificateName.textContent = userName;
+            certificateTest.textContent = tests[currentTest].title + ' Test';
+            certificateScore.textContent = `${userScore}%`;
+            
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            certificateDate.textContent = `Issued on: ${today.toLocaleDateString('en-US', options)}`;
+            
+            showSection(certificateSection);
+        }
+        
+        function resetTest() {
+            userNameInput.value = '';
+            userEmailInput.value = '';
+            currentTest = null;
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            paymentOptions.forEach(opt => opt.classList.remove('selected'));
+            // Select UPI payment option by default
+            document.querySelector('.payment-option[data-method="upi"]').classList.add('selected');
+            selectedPaymentMethod = 'upi';
+            paymentStatus.innerHTML = '';
+            upiDetails.classList.remove('hidden');
+        }
+        
+        // Initialize
+        showSection(testListSection);
+        
+        // Select UPI payment option by default
+        document.querySelector('.payment-option[data-method="upi"]').classList.add('selected');
+        selectedPaymentMethod = 'upi';
+    </script>
+</body>
+</html>
