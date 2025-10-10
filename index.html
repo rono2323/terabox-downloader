@@ -1433,7 +1433,7 @@
         
         function redirectToUPIApp(appName) {
             // Create UPI payment URL
-            const upiUrl =  "upi://pay?pa=sbi2308rohan@ybl&pn=Rohan&am=5&cu=INR";
+            const upiUrl =  "upi://pay?pa=sbi2308rohan@ybl&pn=Rohan&cu=INR";
             
             // Different UPI apps have different URL schemes
             let redirectUrl;
@@ -1443,7 +1443,7 @@ switch(appName) {
     case 'paytm':
     case 'bhim':
     default:
-        redirectUrl = "upi://pay?pa=sbi2308rohan@ybl&pn=Rohan&am=5&cu=INR";
+        redirectUrl = "upi://pay?pa=sbi2308rohan@ybl&pn=Rohan&cu=INR";
 }
 
             
