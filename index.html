@@ -1431,25 +1431,9 @@
             scoreDisplay.textContent = `${userScore}%`;
         }
         
-        function redirectToUPIApp(appName) {
-            // Create UPI payment URL
-            const upiUrl =  "https://www.upi.me/pay?pa=rohan0823@ybl&am=5";
-            
+        
             // Different UPI apps have different URL schemes
-            let redirectUrl;
-switch(appName) {
-    case 'gpay':
-    case 'phonepe':
-    case 'paytm':
-    case 'bhim':
-    default:
-        redirectUrl = "https://www.upi.me/pay?pa=rohan0823@ybl&am=5";
-}
-
             
-            // Try to open the UPI app
-            window.open(redirectUrl, '_blank');
-        }
         
         function generateCertificate() {
             // Set certificate details
