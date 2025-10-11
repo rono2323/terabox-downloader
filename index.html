@@ -543,6 +543,16 @@
             text-align: center;
         }
 
+        .payment-pending {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .test-grid {
                 grid-template-columns: 1fr;
@@ -844,7 +854,32 @@
                 <p><em>Note: Everyone receives a certificate regardless of their score!</em></p>
             </div>
             
-         
+            <div class="payment-options">
+                <div class="payment-option" data-method="card">
+                    <div class="payment-icon">
+                        <i class="far fa-credit-card"></i>
+                    </div>
+                    <h3>Credit/Debit Card</h3>
+                    <p>Pay securely with your card</p>
+                </div>
+                
+                <div class="payment-option selected" data-method="razorpay">
+                    <div class="payment-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Razorpay</h3>
+                    <p>Secure online payment gateway</p>
+                </div>
+                
+                <div class="payment-option" data-method="upi">
+                    <div class="payment-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>UPI</h3>
+                    <p>Fast and secure UPI payment</p>
+                </div>
+            </div>
+            
             <!-- Razorpay Payment Button -->
             <div id="razorpay-details" class="razorpay-container">
                 <h3>Razorpay Payment</h3>
@@ -953,6 +988,7 @@
         const razorpayDetails = document.getElementById('razorpay-details');
         const scoreDisplay = document.getElementById('score-display');
         const certificateContent = document.getElementById('certificate-content');
+        const downloadCertificateBtn = document.getElementById('download-certificate');
         
         const startTestBtns = document.querySelectorAll('.start-test-btn');
         const backToTestsBtn = document.getElementById('back-to-tests');
@@ -962,7 +998,6 @@
         const submitTestBtn = document.getElementById('submit-test');
         const backToTestBtn = document.getElementById('back-to-test');
         const processPaymentBtn = document.getElementById('process-payment');
-        const downloadCertificateBtn = document.getElementById('download-certificate');
         const newTestBtn = document.getElementById('new-test');
         
         const userNameInput = document.getElementById('user-name');
@@ -988,6 +1023,7 @@
         let userEmail = '';
         let userScore = 0;
         let selectedPaymentMethod = 'razorpay';
+        let paymentCompleted = false; // Track payment status
         
         // UPI Payment Details
         const upiId = 'sbi2308rohan@ybl';
@@ -1939,14 +1975,19 @@
                 
                 // Generate certificate after successful payment
                 setTimeout(() => {
+                    paymentCompleted = true;
                     generateCertificate();
                 }, 2000);
             }, 5000);
         });
         
-        // FIXED: Download certificate functionality
+        // FIXED: Download certificate functionality - only available after payment
         downloadCertificateBtn.addEventListener('click', () => {
-            downloadCertificateAsPDF();
+            if (paymentCompleted) {
+                downloadCertificateAsPDF();
+            } else {
+                alert('Please complete the payment first to download your certificate.');
+            }
         });
         
         newTestBtn.addEventListener('click', () => {
@@ -2071,6 +2112,7 @@
                 
                 // Generate certificate after successful payment
                 setTimeout(() => {
+                    paymentCompleted = true;
                     generateCertificate();
                 }, 2000);
             }, 5000);
@@ -2085,6 +2127,13 @@
             const today = new Date();
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             certificateDate.textContent = `Issued on: ${today.toLocaleDateString('en-US', options)}`;
+            
+            // Show download button only if payment is completed
+            if (paymentCompleted) {
+                downloadCertificateBtn.classList.remove('hidden');
+            } else {
+                downloadCertificateBtn.classList.add('hidden');
+            }
             
             showSection(certificateSection);
         }
@@ -2147,6 +2196,7 @@
             currentTest = null;
             currentQuestionIndex = 0;
             userAnswers = [];
+            paymentCompleted = false; // Reset payment status
             paymentOptions.forEach(opt => opt.classList.remove('selected'));
             // Select Razorpay payment option by default
             document.querySelector('.payment-option[data-method="razorpay"]').classList.add('selected');
