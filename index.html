@@ -874,6 +874,1565 @@
         
         // Test Questions Database
         const tests = {
+            const certificateCourses = {
+    'python': {
+        title: 'Python Programming',
+        questions: [
+            {
+                question: 'What is the output of: print(3 * "ab"?)',
+                options: ['ababab', '3ab', 'ab3', 'Error'],
+                correct: 0
+            },
+            {
+                question: 'Which keyword is used to define a function in Python?',
+                options: ['function', 'def', 'define', 'func'],
+                correct: 1
+            },
+            {
+                question: 'What does the "len()" function return?',
+                options: ['Memory size', 'Number of elements', 'Data type', 'ASCII value'],
+                correct: 1
+            },
+            {
+                question: 'Which symbol is used for single-line comments in Python?',
+                options: ['//', '/* */', '#', '--'],
+                correct: 2
+            },
+            {
+                question: 'What is the result of: 5 // 2 in Python?',
+                options: ['2.5', '2', '3', '2.0'],
+                correct: 1
+            },
+            {
+                question: 'Which method adds an element to the end of a list?',
+                options: ['insert()', 'add()', 'append()', 'push()'],
+                correct: 2
+            },
+            {
+                question: 'What does "immutable" mean for Python tuples?',
+                options: ['Cannot be changed', 'Can be modified', 'Takes less memory', 'Is fast'],
+                correct: 0
+            },
+            {
+                question: 'Which module is used for mathematical operations?',
+                options: ['math', 'calc', 'numpy', 'calculate'],
+                correct: 0
+            },
+            {
+                question: 'What is the file extension for Python files?',
+                options: ['.pt', '.py', '.python', '.pyt'],
+                correct: 1
+            },
+            {
+                question: 'Which loop iterates over a sequence?',
+                options: ['for', 'while', 'do-while', 'loop'],
+                correct: 0
+            }
+        ]
+    },
+    'webdev': {
+        title: 'Web Development',
+        questions: [
+            {
+                question: 'What does HTML stand for?',
+                options: [
+                    'Hyper Text Markup Language',
+                    'High Tech Modern Language',
+                    'Hyper Transfer Markup Language',
+                    'Home Tool Markup Language'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which CSS property changes text color?',
+                options: ['text-color', 'font-color', 'color', 'text-style'],
+                correct: 2
+            },
+            {
+                question: 'Which JavaScript function displays an alert box?',
+                options: ['alert()', 'msg()', 'prompt()', 'confirm()'],
+                correct: 0
+            },
+            {
+                question: 'What does CSS stand for?',
+                options: [
+                    'Computer Style Sheets',
+                    'Creative Style System',
+                    'Cascading Style Sheets',
+                    'Colorful Style Sheets'
+                ],
+                correct: 2
+            },
+            {
+                question: 'Which HTML tag is used for the largest heading?',
+                options: ['<h6>', '<heading>', '<h1>', '<head>'],
+                correct: 2
+            },
+            {
+                question: 'Which property is used to change the background color?',
+                options: ['bgcolor', 'color', 'background-color', 'bg-color'],
+                correct: 2
+            },
+            {
+                question: 'How do you comment in JavaScript?',
+                options: ['// Comment', '<!-- Comment -->', '# Comment', '/* Comment */'],
+                correct: 0
+            },
+            {
+                question: 'Which HTML attribute specifies an alternate text for an image?',
+                options: ['src', 'alt', 'title', 'href'],
+                correct: 1
+            },
+            {
+                question: 'What does DOM stand for?',
+                options: [
+                    'Document Object Model',
+                    'Data Object Management',
+                    'Digital Output Mode',
+                    'Display Object Method'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which CSS property controls the space between elements?',
+                options: ['spacing', 'margin', 'padding', 'border'],
+                correct: 1
+            }
+        ]
+    },
+    'c': {
+        title: 'C Programming',
+        questions: [
+            {
+                question: 'Which is the correct syntax to output "Hello World" in C?',
+                options: [
+                    'printf("Hello World");',
+                    'cout << "Hello World";',
+                    'System.out.print("Hello World");',
+                    'print("Hello World");'
+                ],
+                correct: 0
+            },
+            {
+                question: 'What is the size of an int in C?',
+                options: ['2 bytes', '4 bytes', '8 bytes', 'Depends on compiler'],
+                correct: 3
+            },
+            {
+                question: 'Which operator is used to get the address of a variable?',
+                options: ['*', '&', '#', '@'],
+                correct: 1
+            },
+            {
+                question: 'What does the ++ operator do?',
+                options: ['Adds 2', 'Multiplies by 2', 'Increments by 1', 'Decrements by 1'],
+                correct: 2
+            },
+            {
+                question: 'Which loop executes at least once?',
+                options: ['for', 'while', 'do-while', 'if-else'],
+                correct: 2
+            },
+            {
+                question: 'What is a pointer?',
+                options: [
+                    'A variable that stores value',
+                    'A variable that stores address',
+                    'A function',
+                    'A data type'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which header file is needed for printf()?',
+                options: ['<iostream>', '<stdio.h>', '<conio.h>', '<stdlib.h>'],
+                correct: 1
+            },
+            {
+                question: 'What is the return type of main() function?',
+                options: ['void', 'int', 'float', 'char'],
+                correct: 1
+            },
+            {
+                question: 'Which is not a valid variable name?',
+                options: ['my_var', '2var', '_var', 'var2'],
+                correct: 1
+            },
+            {
+                question: 'What does malloc() function do?',
+                options: [
+                    'Memory allocation',
+                    'Memory deallocation',
+                    'Mathematical calculation',
+                    'File operations'
+                ],
+                correct: 0
+            }
+        ]
+    },
+    'cpp': {
+        title: 'C++ Programming',
+        questions: [
+            {
+                question: 'What is the correct way to output in C++?',
+                options: ['printf()', 'cout <<', 'System.out.print()', 'print()'],
+                correct: 1
+            },
+            {
+                question: 'Which concept is not supported by C++?',
+                options: ['Inheritance', 'Polymorphism', 'Garbage Collection', 'Encapsulation'],
+                correct: 2
+            },
+            {
+                question: 'What is a class in C++?',
+                options: [
+                    'A function',
+                    'A blueprint for objects',
+                    'A variable',
+                    'A data type'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which access specifier is most restrictive?',
+                options: ['public', 'private', 'protected', 'default'],
+                correct: 1
+            },
+            {
+                question: 'What is function overloading?',
+                options: [
+                    'Same function name different parameters',
+                    'Same function same parameters',
+                    'Different function same name',
+                    'Function with no parameters'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which operator is used for dynamic memory allocation?',
+                options: ['malloc', 'new', 'alloc', 'create'],
+                correct: 1
+            },
+            {
+                question: 'What is constructor?',
+                options: [
+                    'A function that destroys objects',
+                    'A function that initializes objects',
+                    'A special variable',
+                    'A memory allocator'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What does OOP stand for?',
+                options: [
+                    'Object Oriented Programming',
+                    'Object Output Process',
+                    'Oriented Object Program',
+                    'Output Object Protocol'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is used for input in C++?',
+                options: ['cin >>', 'scanf', 'input', 'read'],
+                correct: 0
+            },
+            {
+                question: 'What is inheritance?',
+                options: [
+                    'Creating new classes from existing ones',
+                    'Destroying classes',
+                    'Hiding data',
+                    'Memory management'
+                ],
+                correct: 0
+            }
+        ]
+    },
+    'java': {
+        title: 'Java Programming',
+        questions: [
+            {
+                question: 'What is the extension of Java bytecode files?',
+                options: ['.java', '.class', '.exe', '.jar'],
+                correct: 1
+            },
+            {
+                question: 'Which keyword is used for inheritance in Java?',
+                options: ['implements', 'inherits', 'extends', 'super'],
+                correct: 2
+            },
+            {
+                question: 'What is JVM?',
+                options: [
+                    'Java Virtual Machine',
+                    'Java Variable Method',
+                    'Java Visual Model',
+                    'Java Version Manager'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is not a primitive data type in Java?',
+                options: ['int', 'float', 'String', 'boolean'],
+                correct: 2
+            },
+            {
+                question: 'What is the default value of boolean?',
+                options: ['true', 'false', 'null', '0'],
+                correct: 1
+            },
+            {
+                question: 'Which method is the entry point of a Java program?',
+                options: ['start()', 'main()', 'run()', 'execute()'],
+                correct: 1
+            },
+            {
+                question: 'What is method overriding?',
+                options: [
+                    'Same method name in same class',
+                    'Same method name in parent and child class',
+                    'Different method same name',
+                    'Method with no parameters'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which keyword creates an object?',
+                options: ['create', 'new', 'object', 'alloc'],
+                correct: 1
+            },
+            {
+                question: 'What is an interface?',
+                options: [
+                    'A class with implementation',
+                    'A blueprint of a class',
+                    'A collection of abstract methods',
+                    'A data type'
+                ],
+                correct: 2
+            },
+            {
+                question: 'Which collection maintains insertion order?',
+                options: ['HashSet', 'TreeSet', 'ArrayList', 'HashMap'],
+                correct: 2
+            }
+        ]
+    },
+    'dsa': {
+        title: 'Data Structures & Algorithms',
+        questions: [
+            {
+                question: 'Which data structure follows the LIFO principle?',
+                options: ['Queue', 'Stack', 'Array', 'Linked List'],
+                correct: 1
+            },
+            {
+                question: 'What is the time complexity of binary search?',
+                options: ['O(n)', 'O(log n)', 'O(n log n)', 'O(1)'],
+                correct: 1
+            },
+            {
+                question: 'Which sorting algorithm has the best worst-case time complexity?',
+                options: ['Bubble Sort', 'Quick Sort', 'Merge Sort', 'Insertion Sort'],
+                correct: 2
+            },
+            {
+                question: 'What is a hash collision?',
+                options: [
+                    'When two keys hash to the same index',
+                    'When a hash table is full',
+                    'When a hash function returns an error',
+                    'When hash values are not unique'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which data structure is used for implementing recursion?',
+                options: ['Queue', 'Stack', 'Tree', 'Graph'],
+                correct: 1
+            },
+            {
+                question: 'What is the time complexity of inserting an element at the beginning of an array?',
+                options: ['O(1)', 'O(n)', 'O(log n)', 'O(n log n)'],
+                correct: 1
+            },
+            {
+                question: 'Which traversal visits root, left subtree, then right subtree?',
+                options: ['Inorder', 'Preorder', 'Postorder', 'Level order'],
+                correct: 1
+            },
+            {
+                question: 'What is the space complexity of DFS on a graph?',
+                options: ['O(V)', 'O(V+E)', 'O(E)', 'O(V log V)'],
+                correct: 0
+            },
+            {
+                question: 'Which algorithm finds the shortest path in a weighted graph?',
+                options: ['BFS', 'DFS', "Dijkstra's", 'Binary Search'],
+                correct: 2
+            },
+            {
+                question: 'What is the average case time complexity of Quick Sort?',
+                options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(log n)'],
+                correct: 1
+            }
+        ]
+    },
+    'sql': {
+        title: 'SQL & Database Management',
+        questions: [
+            {
+                question: 'What does SQL stand for?',
+                options: [
+                    'Structured Query Language',
+                    'Simple Question Language',
+                    'Structured Question Logic',
+                    'Standard Query Logic'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which clause is used to filter records?',
+                options: ['FILTER', 'WHERE', 'HAVING', 'CONDITION'],
+                correct: 1
+            },
+            {
+                question: 'Which command is used to retrieve data?',
+                options: ['GET', 'SELECT', 'RETRIEVE', 'FIND'],
+                correct: 1
+            },
+            {
+                question: 'What is a primary key?',
+                options: [
+                    'A key that can be null',
+                    'A unique identifier for a table',
+                    'A foreign key',
+                    'A temporary key'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which join returns all records when there is a match in either table?',
+                options: ['INNER JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'FULL OUTER JOIN'],
+                correct: 3
+            },
+            {
+                question: 'Which function returns the number of rows?',
+                options: ['TOTAL()', 'SUM()', 'COUNT()', 'NUMBER()'],
+                correct: 2
+            },
+            {
+                question: 'What is normalization?',
+                options: [
+                    'Organizing data to reduce redundancy',
+                    'Making data larger',
+                    'Deleting data',
+                    'Encrypting data'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which command modifies existing data?',
+                options: ['ALTER', 'UPDATE', 'MODIFY', 'CHANGE'],
+                correct: 1
+            },
+            {
+                question: 'What does ACID stand for in databases?',
+                options: [
+                    'Atomicity, Consistency, Isolation, Durability',
+                    'Access, Control, Integrity, Data',
+                    'Atomic, Consistent, Independent, Durable',
+                    'Analysis, Control, Integration, Design'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which constraint ensures all values are unique?',
+                options: ['PRIMARY KEY', 'UNIQUE', 'NOT NULL', 'FOREIGN KEY'],
+                correct: 1
+            }
+        ]
+    },
+    'android': {
+        title: 'Android App Development',
+        questions: [
+            {
+                question: 'Which language is NOT officially supported for Android development?',
+                options: ['Java', 'Kotlin', 'C++', 'Python'],
+                correct: 3
+            },
+            {
+                question: 'What is the name of Android\'s build system?',
+                options: ['Maven', 'Gradle', 'Ant', 'Make'],
+                correct: 1
+            },
+            {
+                question: 'Which file contains the app configuration?',
+                options: ['config.xml', 'AndroidManifest.xml', 'app.json', 'build.gradle'],
+                correct: 1
+            },
+            {
+                question: 'What is an Activity?',
+                options: [
+                    'A single screen in an app',
+                    'A background process',
+                    'A database',
+                    'A layout file'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which method is called when an Activity is first created?',
+                options: ['onStart()', 'onCreate()', 'onResume()', 'onInit()'],
+                correct: 1
+            },
+            {
+                question: 'What is the current recommended language for Android development?',
+                options: ['Java', 'Kotlin', 'C#', 'JavaScript'],
+                correct: 1
+            },
+            {
+                question: 'Which component runs in the background?',
+                options: ['Activity', 'Service', 'Fragment', 'View'],
+                correct: 1
+            },
+            {
+                question: 'What is RecyclerView used for?',
+                options: [
+                    'Displaying large datasets',
+                    'Playing media',
+                    'Network calls',
+                    'Database operations'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which file defines the user interface layout?',
+                options: ['.java', '.kt', '.xml', '.json'],
+                correct: 2
+            },
+            {
+                question: 'What is the minimum SDK for most modern apps?',
+                options: ['API 16', 'API 21', 'API 26', 'API 30'],
+                correct: 1
+            }
+        ]
+    },
+    'git': {
+        title: 'Git & GitHub',
+        questions: [
+            {
+                question: 'Which command initializes a new Git repository?',
+                options: ['git start', 'git init', 'git new', 'git create'],
+                correct: 1
+            },
+            {
+                question: 'What does "git clone" do?',
+                options: [
+                    'Deletes a repository',
+                    'Copies a remote repository locally',
+                    'Creates a new branch',
+                    'Merges branches'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which command shows the current status?',
+                options: ['git show', 'git status', 'git info', 'git current'],
+                correct: 1
+            },
+            {
+                question: 'What is the purpose of "git branch"?',
+                options: [
+                    'List all branches',
+                    'Create new branch',
+                    'Delete branch',
+                    'All of the above'
+                ],
+                correct: 3
+            },
+            {
+                question: 'Which command stages all changes?',
+                options: ['git stage .', 'git add .', 'git commit all', 'git save .'],
+                correct: 1
+            },
+            {
+                question: 'What does "git push" do?',
+                options: [
+                    'Downloads changes',
+                    'Uploads changes to remote',
+                    'Shows history',
+                    'Creates a new repository'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which command shows the commit history?',
+                options: ['git history', 'git log', 'git show', 'git commits'],
+                correct: 1
+            },
+            {
+                question: 'What is a pull request?',
+                options: [
+                    'Request to delete code',
+                    'Request to merge changes',
+                    'Request to create a branch',
+                    'Request to clone repository'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which command merges branches?',
+                options: ['git combine', 'git merge', 'git join', 'git unite'],
+                correct: 1
+            },
+            {
+                question: 'What does "git pull" do?',
+                options: [
+                    'Pushes changes',
+                    'Fetches and merges changes',
+                    'Shows differences',
+                    'Creates a new branch'
+                ],
+                correct: 1
+            }
+        ]
+    },
+    'cybersecurity': {
+        title: 'Cybersecurity Basics',
+        questions: [
+            {
+                question: 'What is phishing?',
+                options: [
+                    'A fishing technique',
+                    'Stealing sensitive information through deception',
+                    'A type of virus',
+                    'Network scanning'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which is the strongest password?',
+                options: [
+                    'password123',
+                    'P@ssw0rd!2024',
+                    '12345678',
+                    'qwerty'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What is two-factor authentication?',
+                options: [
+                    'Using two passwords',
+                    'Two-step verification process',
+                    'Double encryption',
+                    'Two firewalls'
+                ],
+                correct: 1
+            },
+            {
+                question: 'What does VPN stand for?',
+                options: [
+                    'Virtual Private Network',
+                    'Very Protected Network',
+                    'Virtual Public Network',
+                    'Verified Private Network'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is a common type of malware?',
+                options: ['Firewall', 'Router', 'Virus', 'Switch'],
+                correct: 2
+            },
+            {
+                question: 'What is encryption?',
+                options: [
+                    'Converting data to unreadable format',
+                    'Deleting data',
+                    'Compressing data',
+                    'Backing up data'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which protocol is used for secure web browsing?',
+                options: ['HTTP', 'FTP', 'HTTPS', 'SMTP'],
+                correct: 2
+            },
+            {
+                question: 'What is a firewall?',
+                options: [
+                    'Network security system',
+                    'Physical barrier',
+                    'Database',
+                    'Programming language'
+                ],
+                correct: 0
+            },
+            {
+                question: 'What is social engineering?',
+                options: [
+                    'Computer engineering',
+                    'Manipulating people to reveal information',
+                    'Software development',
+                    'Network design'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which helps protect against identity theft?',
+                options: [
+                    'Sharing passwords',
+                    'Using public Wi-Fi for banking',
+                    'Regularly monitoring accounts',
+                    'Using same password everywhere'
+                ],
+                correct: 2
+            }
+        ]
+    },
+    'cloud': {
+        title: 'Cloud Computing Basics',
+        questions: [
+            {
+                question: 'What does IaaS stand for?',
+                options: [
+                    'Internet as a Service',
+                    'Infrastructure as a Service',
+                    'Integration as a Service',
+                    'Information as a Service'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which is NOT a cloud service model?',
+                options: ['SaaS', 'PaaS', 'IaaS', 'RaaS'],
+                correct: 3
+            },
+            {
+                question: 'What is AWS?',
+                options: [
+                    'Amazon Web Services',
+                    'Advanced Web System',
+                    'American Web Services',
+                    'Automated Web Solution'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is a benefit of cloud computing?',
+                options: [
+                    'Higher costs',
+                    'Less scalability',
+                    'Cost savings',
+                    'More maintenance'
+                ],
+                correct: 2
+            },
+            {
+                question: 'What is virtualization?',
+                options: [
+                    'Creating physical servers',
+                    'Running multiple OS on one machine',
+                    'Deleting files',
+                    'Network cabling'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which cloud deployment model is for single organization?',
+                options: ['Public', 'Private', 'Hybrid', 'Community'],
+                correct: 1
+            },
+            {
+                question: 'What is auto-scaling?',
+                options: [
+                    'Manual resource adjustment',
+                    'Automatic resource adjustment',
+                    'Fixed resources',
+                    'Resource deletion'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which AWS service provides virtual servers?',
+                options: ['S3', 'EC2', 'RDS', 'Lambda'],
+                correct: 1
+            },
+            {
+                question: 'What is SaaS?',
+                options: [
+                    'Storage as a Service',
+                    'Software as a Service',
+                    'Security as a Service',
+                    'System as a Service'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which is a cloud storage service?',
+                options: ['AWS S3', 'EC2', 'Lambda', 'VPC'],
+                correct: 0
+            }
+        ]
+    },
+    'linux': {
+        title: 'Linux Fundamentals',
+        questions: [
+            {
+                question: 'Which command lists directory contents?',
+                options: ['list', 'dir', 'ls', 'show'],
+                correct: 2
+            },
+            {
+                question: 'What does "cd ~" do?',
+                options: [
+                    'Goes to root directory',
+                    'Goes to home directory',
+                    'Goes up one directory',
+                    'Shows current directory'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which command displays the current directory?',
+                options: ['pwd', 'cwd', 'where', 'current'],
+                correct: 0
+            },
+            {
+                question: 'What does "chmod" do?',
+                options: [
+                    'Changes file permissions',
+                    'Changes file name',
+                    'Changes directory',
+                    'Changes owner'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which command searches for text in files?',
+                options: ['find', 'search', 'grep', 'locate'],
+                correct: 2
+            },
+            {
+                question: 'What does "sudo" stand for?',
+                options: [
+                    'Super User Do',
+                    'System User Directory',
+                    'Switch User Do',
+                    'Super User Directory'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which command copies files?',
+                options: ['move', 'copy', 'cp', 'dup'],
+                correct: 2
+            },
+            {
+                question: 'What is the root user?',
+                options: [
+                    'Regular user',
+                    'Administrative superuser',
+                    'Guest user',
+                    'Temporary user'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which command shows running processes?',
+                options: ['ps', 'procs', 'tasks', 'jobs'],
+                correct: 0
+            },
+            {
+                question: 'What does "man" command do?',
+                options: [
+                    'Manages files',
+                    'Shows manual pages',
+                    'Manipulates text',
+                    'Marks files'
+                ],
+                correct: 1
+            }
+        ]
+    },
+    'ai': {
+        title: 'Artificial Intelligence (AI)',
+        questions: [
+            {
+                question: 'What is Artificial Intelligence?',
+                options: [
+                    'Machines mimicking human intelligence',
+                    'Natural human thinking',
+                    'Computer hardware',
+                    'Programming languages'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is NOT a type of AI?',
+                options: ['Narrow AI', 'General AI', 'Super AI', 'Simple AI'],
+                correct: 3
+            },
+            {
+                question: 'What is machine learning?',
+                options: [
+                    'AI subset for pattern recognition',
+                    'Manual programming',
+                    'Hardware design',
+                    'Network configuration'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is an AI application?',
+                options: [
+                    'Word processor',
+                    'Spreadsheet',
+                    'Virtual assistant',
+                    'Calculator'
+                ],
+                correct: 2
+            },
+            {
+                question: 'What is natural language processing?',
+                options: [
+                    'Computer understanding human language',
+                    'Programming language',
+                    'Network protocol',
+                    'Database query'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which company developed ChatGPT?',
+                options: ['Google', 'Microsoft', 'OpenAI', 'Amazon'],
+                correct: 2
+            },
+            {
+                question: 'What is computer vision?',
+                options: [
+                    'Computers understanding images',
+                    'Monitor display',
+                    'Graphics card',
+                    'Screen resolution'
+                ],
+                correct: 0
+            },
+            {
+                question: 'What does NLP stand for?',
+                options: [
+                    'Natural Language Processing',
+                    'Network Language Protocol',
+                    'Neural Learning Process',
+                    'Native Language Program'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is a key AI technology?',
+                options: ['Neural networks', 'SQL databases', 'HTML', 'CSS'],
+                correct: 0
+            },
+            {
+                question: 'What is the Turing Test?',
+                options: [
+                    'Test of machine intelligence',
+                    'Programming test',
+                    'Hardware test',
+                    'Network speed test'
+                ],
+                correct: 0
+            }
+        ]
+    },
+    'ml': {
+        title: 'Machine Learning (ML)',
+        questions: [
+            {
+                question: 'What is supervised learning?',
+                options: [
+                    'Learning with labeled data',
+                    'Learning without guidance',
+                    'Learning from rewards',
+                    'Manual programming'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which algorithm is used for classification?',
+                options: ['Linear Regression', 'K-Means', 'Decision Tree', 'Apriori'],
+                correct: 2
+            },
+            {
+                question: 'What is overfitting?',
+                options: [
+                    'Model too simple',
+                    'Model too complex for data',
+                    'Perfect model',
+                    'Under-trained model'
+                ],
+                correct: 1
+            },
+            {
+                question: 'Which is a regression algorithm?',
+                options: ['K-NN', 'Linear Regression', 'K-Means', 'SVM'],
+                correct: 1
+            },
+            {
+                question: 'What is the purpose of training data?',
+                options: [
+                    'Train the model',
+                    'Test the model',
+                    'Validate results',
+                    'Deploy model'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which library is popular for ML in Python?',
+                options: ['NumPy', 'Pandas', 'Scikit-learn', 'Matplotlib'],
+                correct: 2
+            },
+            {
+                question: 'What is clustering?',
+                options: [
+                    'Grouping similar data',
+                    'Classifying data',
+                    'Predicting values',
+                    'Cleaning data'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is an unsupervised learning algorithm?',
+                options: ['Linear Regression', 'Logistic Regression', 'K-Means', 'SVM'],
+                correct: 2
+            },
+            {
+                question: 'What is feature engineering?',
+                options: [
+                    'Creating new features from data',
+                    'Building software',
+                    'Designing UI',
+                    'Network engineering'
+                ],
+                correct: 0
+            },
+            {
+                question: 'What does CNN stand for in ML?',
+                options: [
+                    'Convolutional Neural Network',
+                    'Computer Network Node',
+                    'Central Neural Network',
+                    'Complex Number Network'
+                ],
+                correct: 0
+            }
+        ]
+    },
+    'excel': {
+        title: 'Data Analytics with Excel',
+        questions: [
+            {
+                question: 'What is the maximum rows in modern Excel?',
+                options: ['65,536', '1,048,576', '16,384', '32,768'],
+                correct: 1
+            },
+            {
+                question: 'Which function adds up numbers?',
+                options: ['ADD()', 'TOTAL()', 'SUM()', 'PLUS()'],
+                correct: 2
+            },
+            {
+                question: 'What does VLOOKUP do?',
+                options: [
+                    'Vertical lookup',
+                    'Horizontal lookup',
+                    'Variable lookup',
+                    'Visual lookup'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which feature summarizes data interactively?',
+                options: ['Pivot Table', 'Chart', 'Filter', 'Sort'],
+                correct: 0
+            },
+            {
+                question: 'What is the shortcut to create a new workbook?',
+                options: ['Ctrl+N', 'Ctrl+W', 'Ctrl+S', 'Ctrl+O'],
+                correct: 0
+            },
+            {
+                question: 'Which function checks if a condition is met?',
+                options: ['CHECK()', 'IF()', 'TEST()', 'CONDITION()'],
+                correct: 1
+            },
+            {
+                question: 'What does COUNTIF do?',
+                options: [
+                    'Counts cells with condition',
+                    'Counts all cells',
+                    'Counts empty cells',
+                    'Counts numbers only'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which chart is best for trends over time?',
+                options: ['Pie Chart', 'Bar Chart', 'Line Chart', 'Scatter Plot'],
+                correct: 2
+            },
+            {
+                question: 'What does "Freeze Panes" do?',
+                options: [
+                    'Locks rows/columns while scrolling',
+                    'Stops calculations',
+                    'Protects workbook',
+                    'Hides data'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which function joins text from multiple cells?',
+                options: ['JOIN()', 'CONCAT()', 'COMBINE()', 'MERGE()'],
+                correct: 1
+            }
+        ]
+    },
+    'powerbi': {
+        title: 'Power BI Basics',
+        questions: [
+            {
+                question: 'What is Power BI used for?',
+                options: [
+                    'Data visualization',
+                    'Word processing',
+                    'Programming',
+                    'Graphic design'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which file format is Power BI\'s native format?',
+                options: ['.xlsx', '.pbix', '.csv', '.json'],
+                correct: 1
+            },
+            {
+                question: 'What is DAX?',
+                options: [
+                    'Data Analysis Expressions',
+                    'Digital Audio Experience',
+                    'Data Access XML',
+                    'Database Administration Xcode'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which visual shows parts of a whole?',
+                options: ['Line Chart', 'Bar Chart', 'Pie Chart', 'Scatter Plot'],
+                correct: 2
+            },
+            {
+                question: 'What does "Get Data" do?',
+                options: [
+                    'Imports data into Power BI',
+                    'Exports data',
+                    'Deletes data',
+                    'Transforms data'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is NOT a Power BI component?',
+                options: ['Power Query', 'Power Pivot', 'Power View', 'Power Code'],
+                correct: 3
+            },
+            {
+                question: 'What is a measure in Power BI?',
+                options: [
+                    'A calculated field',
+                    'A data table',
+                    'A visual',
+                    'A report'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which visual is best for comparing categories?',
+                options: ['Pie Chart', 'Line Chart', 'Bar Chart', 'Map'],
+                correct: 2
+            },
+            {
+                question: 'What does Power BI Service provide?',
+                options: [
+                    'Cloud-based sharing',
+                    'Desktop application',
+                    'Data entry',
+                    'Programming interface'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which transformation removes unwanted rows?',
+                options: ['Filter', 'Merge', 'Group', 'Pivot'],
+                correct: 0
+            }
+        ]
+    },
+    'ethicalhacking': {
+        title: 'Ethical Hacking (Intro)',
+        questions: [
+            {
+                question: 'What is ethical hacking?',
+                options: [
+                    'Legal hacking with permission',
+                    'Illegal hacking',
+                    'Social media hacking',
+                    'Password guessing'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which term describes a harmless attack simulation?',
+                options: ['Penetration testing', 'Cyber crime', 'Data theft', 'Virus spreading'],
+                correct: 0
+            },
+            {
+                question: 'What is a vulnerability?',
+                options: [
+                    'System weakness',
+                    'Strong password',
+                    'Firewall',
+                    'Encryption'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which tool is used for network scanning?',
+                options: ['Nmap', 'Word', 'Excel', 'Photoshop'],
+                correct: 0
+            },
+            {
+                question: 'What is social engineering?',
+                options: [
+                    'Human manipulation',
+                    'Programming',
+                    'Network design',
+                    'Data analysis'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is a common penetration testing phase?',
+                options: [
+                    'Reconnaissance',
+                    'Data entry',
+                    'Programming',
+                    'Documentation'
+                ],
+                correct: 0
+            },
+            {
+                question: 'What does CIA stand for in cybersecurity?',
+                options: [
+                    'Confidentiality, Integrity, Availability',
+                    'Central Intelligence Agency',
+                    'Computer Internet Access',
+                    'Cyber Intelligence Analysis'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is a legal requirement for ethical hacking?',
+                options: [
+                    'Written permission',
+                    'No permission needed',
+                    'Verbal permission',
+                    'Public announcement'
+                ],
+                correct: 0
+            },
+            {
+                question: 'What is a white hat hacker?',
+                options: [
+                    'Ethical hacker',
+                    'Malicious hacker',
+                    'Government hacker',
+                    'Anonymous hacker'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which organization provides ethical hacking certifications?',
+                options: ['EC-Council', 'Microsoft', 'Google', 'Apple'],
+                correct: 0
+            }
+        ]
+    },
+    'iot': {
+        title: 'Internet of Things (IoT)',
+        questions: [
+            {
+                question: 'What does IoT stand for?',
+                options: [
+                    'Internet of Things',
+                    'Internet of Technology',
+                    'Integrated Online Things',
+                    'International Online Transfer'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is an IoT device?',
+                options: [
+                    'Smart thermostat',
+                    'Desktop computer',
+                    'Laptop',
+                    'Server'
+                ],
+                correct: 0
+            },
+            {
+                question: 'What is a common IoT communication protocol?',
+                options: ['MQTT', 'HTTP', 'FTP', 'SMTP'],
+                correct: 0
+            },
+            {
+                question: 'Which component collects data in IoT?',
+                options: ['Sensor', 'Actuator', 'Cloud', 'Dashboard'],
+                correct: 0
+            },
+            {
+                question: 'What is the main purpose of IoT?',
+                options: [
+                    'Connect physical devices to internet',
+                    'Increase internet speed',
+                    'Create websites',
+                    'Develop software'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is an IoT application?',
+                options: [
+                    'Smart home',
+                    'Word processing',
+                    'Spreadsheet',
+                    'Presentation'
+                ],
+                correct: 0
+            },
+            {
+                question: 'What does MQTT stand for?',
+                options: [
+                    'Message Queuing Telemetry Transport',
+                    'Message Quality Transfer Technology',
+                    'Mobile Quick Text Transfer',
+                    'Multi-Queue Text Transport'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is a challenge in IoT?',
+                options: [
+                    'Security',
+                    'Speed',
+                    'Cost',
+                    'All of the above'
+                ],
+                correct: 3
+            },
+            {
+                question: 'What is an actuator in IoT?',
+                options: [
+                    'Device that performs action',
+                    'Data storage',
+                    'User interface',
+                    'Network device'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which cloud platform is popular for IoT?',
+                options: ['AWS IoT', 'Google Docs', 'Microsoft Word', 'Adobe Photoshop'],
+                correct: 0
+            }
+        ]
+    },
+    'react': {
+        title: 'JavaScript Frameworks (React.js)',
+        questions: [
+            {
+                question: 'What is React?',
+                options: [
+                    'JavaScript library for UI',
+                    'Programming language',
+                    'Database',
+                    'Operating system'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which company maintains React?',
+                options: ['Google', 'Facebook', 'Microsoft', 'Amazon'],
+                correct: 1
+            },
+            {
+                question: 'What is JSX?',
+                options: [
+                    'JavaScript XML',
+                    'Java Syntax Extension',
+                    'JavaScript Extension',
+                    'Java XML'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which hook manages state in functional components?',
+                options: ['useState', 'useEffect', 'useContext', 'useReducer'],
+                correct: 0
+            },
+            {
+                question: 'What is the virtual DOM?',
+                options: [
+                    'In-memory representation of DOM',
+                    'Real DOM',
+                    'Database',
+                    'File system'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which command creates a new React app?',
+                options: [
+                    'npx create-react-app',
+                    'npm new react',
+                    'react create',
+                    'jsx create'
+                ],
+                correct: 0
+            },
+            {
+                question: 'What are React components?',
+                options: [
+                    'Reusable UI pieces',
+                    'Database tables',
+                    'Network protocols',
+                    'File formats'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which hook handles side effects?',
+                options: ['useState', 'useEffect', 'useContext', 'useMemo'],
+                correct: 1
+            },
+            {
+                question: 'What is props in React?',
+                options: [
+                    'Data passed to components',
+                    'CSS properties',
+                    'JavaScript properties',
+                    'HTML attributes'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which method is used for rendering in class components?',
+                options: ['render()', 'component()', 'display()', 'show()'],
+                correct: 0
+            }
+        ]
+    },
+    'fullstack': {
+        title: 'Full Stack Web Development',
+        questions: [
+            {
+                question: 'What is full stack development?',
+                options: [
+                    'Front-end + back-end development',
+                    'Only front-end',
+                    'Only back-end',
+                    'Database administration'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which is a front-end technology?',
+                options: ['React', 'Node.js', 'Express', 'MongoDB'],
+                correct: 0
+            },
+            {
+                question: 'Which is a back-end technology?',
+                options: ['HTML', 'CSS', 'Node.js', 'JavaScript'],
+                correct: 2
+            },
+            {
+                question: 'What is MERN stack?',
+                options: [
+                    'MongoDB, Express, React, Node.js',
+                    'MySQL, Express, Ruby, Node.js',
+                    'MongoDB, Angular, React, Node.js',
+                    'MySQL, Angular, Ruby, .NET'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which protocol is used for web communication?',
+                options: ['HTTP', 'FTP', 'SMTP', 'TCP'],
+                correct: 0
+            },
+            {
+                question: 'What is REST API?',
+                options: [
+                    'Architectural style for web services',
+                    'Programming language',
+                    'Database',
+                    'Operating system'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which database is NoSQL?',
+                options: ['MySQL', 'PostgreSQL', 'MongoDB', 'SQLite'],
+                correct: 2
+            },
+            {
+                question: 'What is middleware in Express.js?',
+                options: [
+                    'Functions that execute during request lifecycle',
+                    'Database',
+                    'Front-end framework',
+                    'Programming language'
+                ],
+                correct: 0
+            },
+            {
+                question: 'Which command installs Node.js packages?',
+                options: ['npm install', 'node install', 'js install', 'package install'],
+                correct: 0
+            },
+            {
+                question: 'What is the role of a package.json file?',
+                options: [
+                    'Project configuration and dependencies',
+                    'Database schema',
+                    'HTML template',
+                    'CSS styles'
+                ],
+                correct: 0
+            }
+        ]
+    }
+};
+
+
             'dsa': {
                 title: 'Data Structures & Algorithms',
                 questions: [
