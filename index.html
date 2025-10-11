@@ -6,6 +6,9 @@
     <title>SkillCert - Skill Assessment Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <!-- Add jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -836,12 +839,37 @@
             <h2 class="section-title">Unlock Your Certificate</h2>
             
             <div class="completion-message">
-                <h3><i class="fas fa-check-circle" style="color: var(--success);"></i> Test Completed Successfully! FOR PROFESSIONAL CERTIFICATE PAY 5 RS ONLY</h3>
+                <h3><i class="fas fa-check-circle" style="color: var(--success);"></i> Test Completed Successfully!</h3>
                 <p>You've completed the test with a score of <strong id="score-display">0%</strong>. Now unlock your certificate with a payment of just ₹5.</p>
                 <p><em>Note: Everyone receives a certificate regardless of their score!</em></p>
             </div>
             
-              
+            <div class="payment-options">
+                <div class="payment-option" data-method="card">
+                    <div class="payment-icon">
+                        <i class="far fa-credit-card"></i>
+                    </div>
+                    <h3>Credit/Debit Card</h3>
+                    <p>Pay securely with your card</p>
+                </div>
+                
+                <div class="payment-option selected" data-method="razorpay">
+                    <div class="payment-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Razorpay</h3>
+                    <p>Secure online payment gateway</p>
+                </div>
+                
+                <div class="payment-option" data-method="upi">
+                    <div class="payment-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>UPI</h3>
+                    <p>Fast and secure UPI payment</p>
+                </div>
+            </div>
+            
             <!-- Razorpay Payment Button -->
             <div id="razorpay-details" class="razorpay-container">
                 <h3>Razorpay Payment</h3>
@@ -911,7 +939,7 @@
             <h2 class="section-title">Congratulations!</h2>
             <p>You've successfully completed the test and payment. Here's your certificate:</p>
             
-            <div class="certificate">
+            <div class="certificate" id="certificate-content">
                 <h2>CERTIFICATE OF COMPLETION</h2>
                 <p>This certifies that</p>
                 <div class="user-name" id="certificate-name">John Doe</div>
@@ -949,6 +977,7 @@
         const upiDetails = document.getElementById('upi-details');
         const razorpayDetails = document.getElementById('razorpay-details');
         const scoreDisplay = document.getElementById('score-display');
+        const certificateContent = document.getElementById('certificate-content');
         
         const startTestBtns = document.querySelectorAll('.start-test-btn');
         const backToTestsBtn = document.getElementById('back-to-tests');
@@ -1940,16 +1969,9 @@
             }, 5000);
         });
         
+        // FIXED: Download certificate functionality
         downloadCertificateBtn.addEventListener('click', () => {
-            alert('Certificate download started! In a real application, this would generate a PDF.');
-            
-            // Create a temporary link to simulate download
-            const link = document.createElement('a');
-            link.href = '#';
-            link.download = `${userName}_${tests[currentTest].title.replace(/\s+/g, '_')}_Certificate.pdf`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            downloadCertificateAsPDF();
         });
         
         newTestBtn.addEventListener('click', () => {
@@ -2090,6 +2112,58 @@
             certificateDate.textContent = `Issued on: ${today.toLocaleDateString('en-US', options)}`;
             
             showSection(certificateSection);
+        }
+        
+        // NEW: Function to download certificate as PDF
+        function downloadCertificateAsPDF() {
+            // Show loading message
+            const originalText = downloadCertificateBtn.innerHTML;
+            downloadCertificateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+            downloadCertificateBtn.disabled = true;
+            
+            // Use html2canvas to capture the certificate as an image
+            html2canvas(certificateContent, {
+                scale: 2, // Higher quality
+                useCORS: true,
+                logging: false
+            }).then(canvas => {
+                // Convert canvas to image data
+                const imgData = canvas.toDataURL('image/jpeg', 1.0);
+                
+                // Create PDF using jsPDF
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('landscape', 'mm', 'a4');
+                
+                // Calculate dimensions to fit the certificate in A4
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                const imgWidth = canvas.width;
+                const imgHeight = canvas.height;
+                const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+                const imgX = (pdfWidth - imgWidth * ratio) / 2;
+                const imgY = (pdfHeight - imgHeight * ratio) / 2;
+                
+                // Add image to PDF
+                pdf.addImage(imgData, 'JPEG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+                
+                // Generate filename
+                const fileName = `${userName}_${tests[currentTest].title.replace(/\s+/g, '_')}_Certificate.pdf`;
+                
+                // Download the PDF
+                pdf.save(fileName);
+                
+                // Restore button state
+                downloadCertificateBtn.innerHTML = originalText;
+                downloadCertificateBtn.disabled = false;
+                
+            }).catch(error => {
+                console.error('Error generating PDF:', error);
+                alert('Error generating certificate. Please try again.');
+                
+                // Restore button state
+                downloadCertificateBtn.innerHTML = originalText;
+                downloadCertificateBtn.disabled = false;
+            });
         }
         
         function resetTest() {
